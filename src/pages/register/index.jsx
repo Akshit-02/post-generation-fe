@@ -22,15 +22,8 @@ const RegisterPage = () => {
           username: email.toLowerCase(),
           password: password,
         });
-        try {
-          const currentUser = await getCurrentUser();
-          console.log("currentUser", currentUser);
-          // await dispatch(fetchUser(currentUser.username));
 
-          navigate("/dashboard");
-        } catch (error) {
-          console.error("Error during login:", error);
-        }
+        navigate("/generate");
       }
     } catch (error) {
       console.error("Error:", error);

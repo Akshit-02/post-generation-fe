@@ -17,13 +17,7 @@ const LoginPage = () => {
         password: password,
       });
       if (user.isSignedIn) {
-        try {
-          const currentUser = await getCurrentUser();
-
-          navigate("/dashboard");
-        } catch (error) {
-          console.error("Error during login:", error);
-        }
+        navigate("/generate");
       }
     } catch (error) {
       console.error("Error:", error);
