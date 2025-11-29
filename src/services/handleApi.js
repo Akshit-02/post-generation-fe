@@ -16,7 +16,7 @@ export const getUserByIdAPI = async (id) => {
       variables: {
         id,
       },
-      authMode: "userPool",
+      authMode: "usexrPool",
     });
     return response?.data?.getUserById;
   } catch (error) {
@@ -32,7 +32,7 @@ export const generateIdeasForPostAPI = async (industry) => {
       variables: {
         industry,
       },
-      authMode: "apiKey",
+      authMode: "userPool",
     });
     return response?.data?.generateIdeasForPost;
   } catch (error) {
@@ -48,7 +48,7 @@ export const generatePostsAPI = async (ideas) => {
       variables: {
         input: ideas,
       },
-      authMode: "apiKey",
+      authMode: "userPool",
     });
     return response?.data?.generatePosts;
   } catch (error) {
@@ -64,7 +64,7 @@ export const createSavedPostAPI = async (input) => {
       variables: {
         input,
       },
-      authMode: "apiKey",
+      authMode: "userPool",
     });
     return response?.data?.createSavedPost;
   } catch (error) {
@@ -80,9 +80,9 @@ export const getSavedPostByUserIdAPI = async (userId) => {
       variables: {
         userId,
       },
-      authMode: "apiKey",
+      authMode: "userPool",
     });
-    return response?.data?.getSavedPostByUserId;
+    return response?.data?.getSavedPostByUserId?.items;
   } catch (error) {
     console.error("Error:", error);
     throw error;

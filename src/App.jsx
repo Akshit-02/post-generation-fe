@@ -4,6 +4,7 @@ import awsmobile from "./aws-export";
 import GeneratePostPage from "./pages/generate";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
+import SavedPostsPage from "./pages/saved-posts";
 
 Amplify.configure(awsmobile, { ssr: true });
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/generate" element={<GeneratePostPage />} />
+        <Route path="/saved-posts" element={<SavedPostsPage />} />
       </Routes>
     </Router>
   );
