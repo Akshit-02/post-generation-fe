@@ -177,7 +177,7 @@ const RegisterPage = () => {
             <button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full py-4 bg-gradient-to-r from-[#2B2B2B] to-[#919191] text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full py-4 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -210,7 +210,7 @@ const RegisterPage = () => {
               Already have an account?{" "}
               <a
                 href="/login"
-                className="text-[#2B2B2B] font-semibold hover:text-[#919191] transition-colors"
+                className="text-purple-600 font-semibold hover:text-purple-700 transition-colors"
               >
                 Sign In
               </a>

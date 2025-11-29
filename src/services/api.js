@@ -47,3 +47,41 @@ export const generatePosts = /* GraphQL */ `
     }
   }
 `;
+
+export const createSavedPost = /* GraphQL */ `
+  mutation createSavedPost($input: CreateSavedPostInput!) {
+    createSavedPost(input: $input) {
+      id
+      userId
+      idea
+      hook
+      story
+      visualText
+      imagePrompt
+      caption
+      imageUrl
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const getSavedPostByUserId = /* GraphQL */ `
+  query getSavedPostByUserId($userId: String!) {
+    getSavedPostByUserId(userId: $userId) {
+      items {
+        id
+        userId
+        idea
+        hook
+        story
+        visualText
+        imagePrompt
+        caption
+        imageUrl
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
