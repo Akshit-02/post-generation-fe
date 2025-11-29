@@ -38,7 +38,7 @@ const menuItems = [
   },
 ];
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -52,20 +52,14 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <aside
-      className={`fixed left-0 top-0 h-full bg-white shadow-lg transition-all duration-300 z-40 ${
-        isOpen ? "w-64" : "w-20"
-      }`}
-    >
+    <aside className="fixed left-0 top-0 h-full bg-white shadow-lg transition-all duration-300 z-40 w-64">
       {/* Logo */}
       <div className="flex items-center justify-center h-16 border-b border-gray-200">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold">
             N2I
           </div>
-          {isOpen && (
-            <span className="text-xl font-bold text-gray-900">News2Insta</span>
-          )}
+          <span className="text-xl font-bold text-gray-900">News2Insta</span>
         </div>
       </div>
 
@@ -82,7 +76,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             }`}
           >
             {item.icon}
-            {isOpen && <span className="font-medium">{item.name}</span>}
+            <span className="font-medium">{item.name}</span>
           </Link>
         ))}
       </nav>
@@ -101,11 +95,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           >
             <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
           </svg>
-          {isOpen && (
-            <span className="font-medium" onClick={handleLogout}>
-              Logout
-            </span>
-          )}
+
+          <span className="font-medium" onClick={handleLogout}>
+            Logout
+          </span>
         </button>
       </div>
     </aside>

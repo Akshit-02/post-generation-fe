@@ -1,4 +1,4 @@
-import { getCurrentUser, signIn, signUp } from "aws-amplify/auth";
+import { signIn, signUp } from "aws-amplify/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
-import { getMediaUrl } from "../../utils/helper";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import SavedPostCard from "../../components/partials/SavedPostCard";
-import LoadingSpinner from "../../components/common/LoadingSpinner";
-import ErrorAlert from "../../components/common/ErrorAlert";
 import { getSavedPostByUserIdAPI } from "../../services/handleApi";
+import { getMediaUrl } from "../../utils/helper";
 
 const SavedPostsPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterBy, setFilterBy] = useState("all"); // all, recent, oldest
 
   useEffect(() => {
     fetchSavedPosts();
@@ -20,20 +16,14 @@ const SavedPostsPage = () => {
 
   const fetchSavedPosts = async () => {
     setLoading(true);
-    setError(null);
 
     try {
       const user = await getCurrentUser();
       const response = await getSavedPostByUserIdAPI(user.username);
 
-      if (response) {
-        setPosts(response || []);
-      } else {
-        setError("Failed to fetch saved posts");
-      }
+      setPosts(response || []);
     } catch (err) {
       console.error("Error fetching saved posts:", err);
-      setError("Failed to load saved posts. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -63,26 +53,6 @@ const SavedPostsPage = () => {
     }
   };
 
-  // Filter and search logic
-  const filteredPosts = posts
-    .filter((post) => {
-      if (searchTerm) {
-        return (
-          post.caption?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.idea?.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      }
-      return true;
-    })
-    .sort((a, b) => {
-      if (filterBy === "recent") {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      } else if (filterBy === "oldest") {
-        return new Date(a.createdAt) - new Date(b.createdAt);
-      }
-      return 0;
-    });
-
   return (
     <DashboardLayout>
       <div className="max-w-7xl mx-auto">
@@ -97,7 +67,7 @@ const SavedPostsPage = () => {
         )}
 
         {/* Empty State */}
-        {!loading && filteredPosts.length === 0 && (
+        {!loading && posts.length === 0 && (
           <div className="bg-white rounded-lg shadow-md p-12 text-center">
             <svg
               className="w-24 h-24 mx-auto text-gray-400 mb-4"
@@ -130,9 +100,9 @@ const SavedPostsPage = () => {
         )}
 
         {/* Posts Grid */}
-        {!loading && filteredPosts.length > 0 && (
+        {!loading && posts.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-            {filteredPosts.map((post, idx) => (
+            {posts.map((post, idx) => (
               <SavedPostCard
                 key={post.id || idx}
                 post={post}

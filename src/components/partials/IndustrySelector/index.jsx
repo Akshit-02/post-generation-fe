@@ -1,3 +1,4 @@
+import { INDUSTRIES } from "../../../utils/common";
 import ErrorAlert from "../../common/ErrorAlert";
 
 const IndustrySelector = ({
@@ -7,19 +8,6 @@ const IndustrySelector = ({
   loading,
   error,
 }) => {
-  const industries = [
-    "Healthcare",
-    "Technology",
-    "Finance",
-    "Education",
-    "Retail",
-    "Manufacturing",
-    "Hospitality",
-    "Real Estate",
-    "Marketing",
-    "E-commerce",
-  ];
-
   return (
     <div className="bg-white rounded-lg shadow-md p-8">
       <div className="flex items-center mb-6">
@@ -39,7 +27,7 @@ const IndustrySelector = ({
           disabled={loading}
         >
           <option value="">Select an industry...</option>
-          {industries.map((ind) => (
+          {INDUSTRIES.map((ind) => (
             <option key={ind} value={ind}>
               {ind}
             </option>

@@ -1,16 +1,6 @@
-import { getMediaUrl } from "../../../utils/helper";
+import { formatDate, getMediaUrl } from "../../../utils/helper";
 
 const SavedPostCard = ({ post, index, onDownload }) => {
-  const formatDate = (dateString) => {
-    if (!dateString) return "Unknown date";
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
-
   return (
     <div className="relative bg-white border-2 border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
       {/* Header */}

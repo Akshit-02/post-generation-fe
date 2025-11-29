@@ -1,4 +1,3 @@
-// pages/GeneratePage.jsx
 import { useState } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
 import {
@@ -27,9 +26,6 @@ const GeneratePostPage = () => {
 
   const steps = ["Scrape News", "Generate Ideas", "Create Posts"];
 
-  // ============================================
-  // Step 1: Industry Selection
-  // ============================================
   const handleStartAutomation = async () => {
     if (!industry.trim()) {
       setError("Please enter an industry");
@@ -57,9 +53,6 @@ const GeneratePostPage = () => {
     }
   };
 
-  // ============================================
-  // Step 2: Idea Selection
-  // ============================================
   const handleSelectIdea = (index) => {
     setSelectedIdeas((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
@@ -100,9 +93,6 @@ const GeneratePostPage = () => {
     }
   };
 
-  // ============================================
-  // Step 3: Post Management
-  // ============================================
   const handleSelectPost = (index) => {
     setSelectedPosts((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
