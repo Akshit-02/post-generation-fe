@@ -33,7 +33,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F1F1F1] to-[#D4D4D4] flex items-center justify-center p-6 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-8 relative flex items-center justify-center">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#2B2B2B]/5 rounded-full blur-3xl animate-pulse"></div>
         <div

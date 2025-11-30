@@ -1,5 +1,10 @@
 import { Amplify } from "aws-amplify";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import awsmobile from "./aws-export";
 import GeneratePostPage from "./pages/generate";
 import LoginPage from "./pages/login";
@@ -12,6 +17,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/generate" element={<GeneratePostPage />} />
